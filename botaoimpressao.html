@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Botão de Impressão</title>
+    <style>
+        /* CSS BÁSICO */
+        .conteudo-nao-imprimivel {
+            background-color: lightcoral;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        #area-a-imprimir {
+            border: 2px solid darkblue;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        /* --- CSS SÓ PARA IMPRESSÃO --- */
+        @media print {
+            /* Oculta tudo que tem essa classe ou é um botão */
+            .conteudo-nao-imprimivel,
+            #botao-imprimir {
+                display: none !important;
+            }
+
+            /* Estiliza o conteúdo a ser impresso para a folha */
+            #area-a-imprimir {
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="conteudo-nao-imprimivel">
+        Este é um Menu e não deve aparecer na impressão.
+    </header>
+
+    <div id="area-a-imprimir">
+        <h2>Conteúdo Principal (Será Impresso)</h2>
+        <p>Este parágrafo contém informações cruciais que o usuário deseja imprimir. Com o `@media print` no CSS, apenas esta área será formatada para a impressão.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <div class="conteudo-nao-imprimivel">
+        <button id="botao-imprimir" onclick="window.print()">
+            Imprimir Apenas o Conteúdo Acima
+        </button>
+        <p>Este rodapé também será oculto.</p>
+    </div>
+
+    <script>
+        // O código mais simples, que apenas aciona a impressão, é:
+        // document.getElementById('botao-imprimir').onclick = function() {
+        //     window.print();
+        // };
+        
+        // No exemplo acima, eu simplifiquei e coloquei o 'onclick="window.print()"'
+        // diretamente no HTML do botão.
+    </script>
+
+</body>
+</html>

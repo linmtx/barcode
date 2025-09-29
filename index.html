@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Gerador de código de barras</title>
+
+    <style>
+
+        .campo-condicional {
+            display: none;
+        }
+
+        @media print {
+    body * {
+        visibility: hidden; /* Oculta tudo */
+    }
+
+    #barcode, #barcode * {
+        visibility: visible; /* Mostra apenas o código de barras */
+    }
+
+    #barcode {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    button {
+        display: none !important; /* Esconde botões */
+    }
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container-logos">
+<img src="/img/polo_pb.png" alt="logo Polo" class="logo">
+</div>
+
+
+<div class="INFO_INICIAIS">
+    <h1>EMISSÃO DE CÓDIGO DE BARRAS</h1>
+    
+
+<form id="Formulario">
+<label>TIPO:
+
+    <select id="TIPO">
+
+        <option value="">Selecione</option>
+        <option value="U">Uniforme</option>
+        <option value="H">Higiene</option>
+        <option value="B">Brinde</option>
+        <option value="P">Papelaria</option>
+        <option value="FT">Ferramenta de trabalho</option>
+    </select>
+
+</label>
+
+  <div id="campos-uniformes" class="campo-condicional">
+<label>MODELO DE UNIFORME:
+
+  
+
+    <select id="MODELO_UNIFORME">
+
+        <option value="">Selecione</option>
+        <option value="CA">Camiseta</option>
+        <option value="MO">Moletom</option>
+        <option value="CL">Calça</option>
+        <option value="CT">Colete</option>
+
+    </select>
+</label>
+
+
+<label>TAMANHO DE UNIFORME:
+    
+
+    <select id="TAMANHO_UNIFORME">
+
+        <option value="">Selecione</option>
+        <option value="PQ">Pequeno</option>
+        <option value="MD">Medio</option>
+        <option value="GR">Grande</option>
+        <option value="GG">GG</option>
+        <option value="XGG">XGG</option>
+
+        </select>
+</label>
+
+<label>COR DE UNIFORME:
+
+    <select id="COR_UNIFORME">
+
+        <option value="">Selecione</option>
+        <option value="#FFFF00">Amarelo</option>
+        <option value="#0000FF">Azul</option>
+        <option value="#FFFFFF">Branco</option>
+        <option value="#C0C0C0">Prata</option>
+        <option value="#FF7F00">Laranja</option>
+        <option value="#A62A2A">Marrom</option>
+        <option value="#000000">Preto</option>
+        <option value="#FF6EC7">Rosa</option>
+        <option value="#00FF00">Verde</option>
+        <option value="#2F4F2F">Verde Escuro</option>
+        <option value="#FF0000">Vermelho</option>
+        <option value="#FFD700">Dourado</option>
+        <option value="#000000#C0C0C0">Preto com Prata</option>
+        <option value="#000000#FFD700">Preto com Dourado</option>
+
+
+    </select>
+
+</label>
+
+</div>
+
+<div id="campos-ferramentas" class="campo-condicional">
+
+<label>FERRAMENTA DE TRABALHO:
+    
+
+    <select id="FERRAMENTAS">
+
+        <option value="">Selecione</option>
+        <option value="RD">Rádio</option>
+        <option value="ET">Estilete</option>
+        <option value="LA">Lâmina para Estilete</option>
+
+        </select>
+</label>
+
+</div>
+
+<div id="campos-higiene" class="campo-condicional">
+
+<label>ITENS PARA HIGIENE:
+    
+
+    <select id="HIGIENE">
+
+        <option value="">Selecione</option>
+        <option value="DTR">Detergente</option>
+        <option value="DSF">Desinfetante</option>
+        <option value="PPH">Papel higiênico</option>
+        <option value="PPT">Papel toalha</option>
+        <option value="AS">Água Sanitária</option>
+        <option value="PNPR">Pano de Prato</option>
+        <option value="PNLP">Pano para limpeza</option>
+
+        </select>
+</label>
+
+</div>
+
+<div id="campos-papelaria" class="campo-condicional">
+
+<label>ITENS DE PAPELARIA: 
+    
+
+    <select id="PAPELARIA">
+
+        <option value="">Selecione</option>
+        <option value="CN#000000">Caneta preta</option>
+        <option value="CN#0000FF">Caneta Azul</option>
+        <option value="PI">Post-It</option>
+        <option value="">inserir</option>
+        <option value="">inserir</option>
+        <option value="">inseriro</option>
+        <option value="">inserir</option>
+
+        </select>
+</label>
+
+</div>
+
+<div id="campos-brindes" class="campo-condicional">
+
+
+
+<label>TIPO DE BRINDE:
+
+    
+    <select id="TIPO_DE_BRINDE">
+
+        <option value="">Selecione</option>
+        <option value="AG">Agenda</option>
+        <option value="CPD#000000#FFD700">Camiseta Preta com Dourado</option>
+        <option value="CPP#000000#C0C0C0">Camiseta Preta com Prata</option>
+        <option value="BN">Boné Euro Team</option>
+        <option value="SC#000000">Sacola Preta</option>
+        <option value="GRT">Garrafa Termica</option>
+        <option value="MCH#000000">Mochila Preta Euro</option>
+        <option value="CAP">Caneta Azul Polino</option>
+        <option value="BAG">BAG (Sacola/ Mochila)</option>
+        <option value="KIT">Kit Montado</option>
+        <option value="CPA#0000FF">Copo Azul Euro</option>
+        <option value="CHV#0000FF">Chaveiro Azul</option>
+
+
+    </select>
+</label>
+ 
+</div>
+
+
+<button type="submit">Gerar código de barras</button>
+</form>
+
+
+
+    <div id="Result">
+
+        <p><strong>Código</strong> <span id="codigo"></span></p>
+        <svg id="barcode"></svg>
+        <button id="btn-imprimir">Imprimir código de barras</button>
+
+
+
+    </div>
+ 
+</div>
+
+</div>
+
+<script>
+    document.getElementById('btn-imprimir').addEventListener('click', function () {
+        window.print();
+    });
+</script>
+
+
+<script src="script.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+ 
+</body>
+</html>
